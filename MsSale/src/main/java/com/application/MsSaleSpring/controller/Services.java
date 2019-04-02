@@ -1,4 +1,4 @@
-package com.elena.application.MsSaleSpring.controller;
+package com.application.MsSaleSpring.controller;
 
 import java.io.IOException;
 

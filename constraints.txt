@@ -1,19 +1,19 @@
 MsProduct: http://localhost:8080; ../toyexample/MsProduct; Java
-	module DAO: com.elena.application.MsCustomer.dao.*
-	module Controller : com.elena.application.MsCustomer.controller.**
-	module Service : com.elena.application.MsCustomer.services.**
+	module DAO: com.application.MsCustomer.dao.*
+	module Controller : com.application.MsCustomer.controller.**
+	module Service : com.application.MsCustomer.services.**
 	module SpringBoot: org.springframework.boot.**
-	module Main: com.elena.application.MsCustomer.main.ProductApp.*
+	module Main: com.application.MsCustomer.main.ProductApp.*
 	Main must-depend SpringBoot
 	only Service can-depend DAO
 	Controller must-useannotation org.springframework.web.bind.annotation.RestController
 	Service must-useannotation org.springframework.stereotype.Service
-	only DAO can-useannotation JPA 	
+	only DAO can-useannotation JPA
 MsCustomer: http://localhost:9000; ../toyexample/MsCustomer; Java
-	module Controller: com.elena.application.MsCustomer.controller.**
-	module DAO: com.elena.application.MsCustomer.dao.*
+	module Controller: com.application.MsCustomer.controller.**
+	module DAO: com.application.MsCustomer.dao.*
 	module SpringBoot: org.springframework.boot.**
-	module Main: com.elena.application.MsCustomer.application.CustomerApp.*
+	module Main: com.application.MsCustomer.application.CustomerApp.*
 	Main must-depend SpringBoot
 	only Controller can-depend DAO
 	Controller must-useannotation org.springframework.web.bind.annotation.RestController

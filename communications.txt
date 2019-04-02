@@ -1,0 +1,10 @@
+/home/AplicacaoVendas/MsCliente/src/com/intercomm/CustomerProductInterface (MsCliente) communicates MsProduto using /product/getProduct/{id}
+/home/AplicacaoVendas/MsSale/src/com/controller/SaleController (MsVenda) communicates MsProduto using /venda/{id}/{qnt}
+/home/AplicacaoVendas/MsSale/src/com/controller/SaleController (MsVenda) communicates MsProduto using /product/getProduct/{id}
+/home/AplicacaoVendas/MsSale/src/com/controller/CustomerInterface (MsVenda) communicates MsCliente using /customer/getCustomerCpf/{cpf}
+/home/AplicacaoVendas/MsCliente/src/intercomm/CustomerController (MsCliente) communicates MsProduto using /getAllProducts/
+/home/AplicacaoVendas/MsSale/src/com/controller/ProductInterface (MsVenda) communicates MsProduto using /getProducts/
+/home/AplicacaoVendas/MsCliente/src/intercomm/CustomerController (MsCliente) communicates viacep using ws/37200000/json/
+/home/AplicacaoVendas/MsCliente/src/intercomm/CustomerController (MsCliente) communicates MsNewsLetter using /publish/{cpf}/{email}
+/home/AplicacaoVendas/MsSale/src/com/controller/ProductInterface (MsProduto) communicates MsNewsLetter using /publish
+/home/AplicacaoVendas/MsSale/src/com/controller/SaleController (MsVenda) communicates MsAutenticacao using /api/authenticate

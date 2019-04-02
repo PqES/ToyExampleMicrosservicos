@@ -20,10 +20,10 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableAutoConfiguration
 
-@EnableFeignClients(basePackages = {"com.elena.application.MsSaleSpring.intercomm", "com.elena.application.MsSaleSpring.controller"})
+@EnableFeignClients(basePackages = {"com.application.MsSaleSpring.intercomm", "com.application.MsSaleSpring.controller"})
 
 
-@SpringBootApplication(scanBasePackages={"com.elena.application.MsSaleSpring.intercomm","com.elena.application.MsSaleSpring.controller"})
+@SpringBootApplication(scanBasePackages={"com.application.MsSaleSpring.intercomm","com.application.MsSaleSpring.controller"})
 public class SaleApplication {
 
 	public static void main(String[] args) {
