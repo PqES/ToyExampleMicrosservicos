@@ -4,10 +4,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="customer")
+@Repository
+@Transactional
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

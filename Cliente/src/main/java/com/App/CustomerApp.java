@@ -1,5 +1,7 @@
 package com.App;
 
+import javax.transaction.Transactional;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableAutoConfiguration
 @EnableFeignClients(basePackages = { "com.intercomm", "com.controller" })
 @SpringBootApplication(scanBasePackages = { "com.intercomm", "com.DAO", "com.entities", "com.controller" })
+@Transactional
 public class CustomerApp {
 
 	public static void main(String[] args) {

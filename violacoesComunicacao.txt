@@ -1,0 +1,23 @@
+Violações de Comunicação
+	Produto:
+		AUSENCIA: [/home/AplicacaoVendas/Produto/src/com/intercomm/InterfaceNotificacao] MUST_COMMUNICATE Notificacao 
+
+	Venda:
+		DIVERGENCIA: [/home/AplicacaoVendas/Venda/src/com/controller/InterfaceAutenticacao] ONLY_CAN_COMMUNICATE Autenticacao, 
+		[/home/AplicacaoVendas/Cliente/src/intercomm/ControlerVenda] COMMUNICATE Autenticacao using /autheticate
+
+		DIVERGENCIA: [/home/AplicacaoVendas/Venda/src/com/controller/InterfaceProduto] ONLY_CAN_COMMUNICATE Produto, 
+		[/home/AplicacaoVendas/Cliente/src/intercomm/ControlerVenda] COMMUNICATE Produto using /getAllProducts/
+
+		DIVERGENCIA: [/home/AplicacaoVendas/Venda/src/com/controller/InterfaceProduto] ONLY_CAN_COMMUNICATE Produto,
+		[/home/AplicacaoVendas/Cliente/src/com/intercomm/ControlerVenda] COMMUNICATE Produto using /product/getProduct/{id}
+
+	Cliente:
+		DIVERGENCIA: [/home/AplicacaoVendas/Cliente/*] CAN_COMMUNICATE_ONLY Notificacao, 
+		[/home/AplicacaoVendas/Cliente/src/intercomm/ClienteController] COMMUNICATE viacep using ws/{cep}/json/
+		
+		DIVERGENCIA: [/home/AplicacaoVendas/Cliente/*] CAN_COMMUNICATE_ONLY Notificacao, 
+		[/home/AplicacaoVendas/Cliente/src/com/intercomm/InterfaceProduto] COMMUNICATE Produto using /product/getProduct/{id}
+
+		DIVERGENCIA: [/home/AplicacaoVendas/Cliente/*] CAN_COMMUNICATE_ONLY Notificacao, 
+		[/home/AplicacaoVendas/Cliente/src/com/intercomm/InterfaceProduto] COMMUNICATE Produto using /product/getAllProducts

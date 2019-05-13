@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +20,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.services.ProductService;
 
 @RestController
+@Transactional
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	
+	
+	
 
 	@RequestMapping("/index")
 	@ResponseBody
@@ -54,14 +60,7 @@ public class ProductController {
 
 	}
 
-	/**
-	 * Mudei o mapping, pois o mapping original (/product/getProducts/) não
-	 * estava funcionando
-	 * 
-	 * @return
-	 * @throws IOException
-	 */
-	@RequestMapping(value = "getProducts") // , produces = "application/json")
+	@RequestMapping(value = "getProducts") 
 	@ResponseBody
 	public List<Product> getAllProducts() throws IOException {
 		return productService.getAllProducts();
@@ -75,7 +74,6 @@ public class ProductController {
 		Product products[] = new Product[id.length];
 		for (int i = 0; i < estoque.length; i++) {
 			products[i] = productService.findOneProduct(id[i]);
-			//products[i] = productDAO.findOne(id[i]);
 			estoque[i] = products[i].getNumber() - Integer.parseInt(qt[i]);
 			if (estoque[i] < 0) {
 				return "fail";
@@ -89,28 +87,6 @@ public class ProductController {
 		return "success";
 	}
 
-//	@RequestMapping(value = "/publish", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String publisNewsLetter() {
-//
-//		String getCustomer = "http://localhost:5001/?method=Publish";
-//		try {
-//			URL url = new URL(getCustomer);
-//			HttpURLConnection requestCustomer = (HttpURLConnection) url.openConnection();
-//			requestCustomer.connect();
-//
-//			JsonParser jp = new JsonParser();
-//			JsonElement getCustomerResult = jp.parse(new InputStreamReader((InputStream) requestCustomer.getContent()));
-//			return getCustomerResult.toString();
-//
-//		} catch (Exception e) {
-//			System.out.println("" + e.getMessage());
-//			e.printStackTrace();
-//			return "Erro:" + e.getMessage();
-//		}
-//
-//	}
-
 	@RequestMapping(value = "/product/getProduct/{id}")
 	@ResponseBody
 	public String getProductByID(@PathVariable("id") String id) {
@@ -119,14 +95,6 @@ public class ProductController {
 		return productName.getName();
 	}
 
-	/**
-	 * Converte uma lista em um JSON (fonte:
-	 * https://stackoverflow.com/questions/13514570/jackson-best-way-writes-a-java-list-to-a-json-array)
-	 * 
-	 * @param lista
-	 * @return lista convertida para JSON
-	 * @throws IOException
-	 */
 	public String writeListToJsonArray(List<Product> lista) throws IOException {
 
 		final StringWriter sw = new StringWriter();
